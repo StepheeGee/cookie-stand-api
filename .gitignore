@@ -1,12 +1,17 @@
 Source: https://github.com/github/gitignore/blob/master/Python.gitignore
 
 # User generated
+.env
+.env/
 ENV/
 .vscode
 .idea
 .DS_Store
 .history
-
+.venv
+venv
+venv/
+.venv/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
