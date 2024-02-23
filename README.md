@@ -1,37 +1,55 @@
-# api-quick-start
+# Lab 34 - Cookie Stand API
 
-Template Project for starting up CRUD API with Django Rest Framework
+## Date - 2.23.24
 
-## Customization Steps
+## Author: Stephanie G. Johnson
 
-- DO NOT migrate yet
-- add additional dependencies as needed
-  - Re-export requirements.txt as needed
-- change `things` folder to the app name of your choice
-- Search through entire code base for `Thing`,`Things` and `things` to modify code to use your resource
-  - `project/settings.py`
-  - `project/urls.py`
-  - App's files
-    - `views.py`
-    - `urls.py`
-    - `admin.py`
-    - `serializers.py`
-    - `permissions.py`
-  - "Front" files
-    - if including a customer facing portion of the site then update/recreate:
-      - `urls_front.py`
-      - `views_front.py`
-      - template files
-      - Make sure to update project `urls.py` to add routes to the "front".
-- Update ThingModel with fields you need
-  - Make sure to update other modules that would be affected by Model customizations. E.g. serializers, tests, etc.
-- Rename `project/.env.sample` to `.env` and update as needed
-  - To generate secret key use `python3 -c "import secrets; print(secrets.token_urlsafe())"`
-- Run makemigrations and migrate commands when ready.
-- Run `python manage.py collectstatic`
-  - This repository includes static assets in repository. If you are using a Content Delivery Network then remove `staticfiles` from repository.
-- Optional: Update `api_tester.py`
+## Description:
 
-## Database
+This project is a Restful API for Cookie Stands with a user facing interface. It will allow you to create, read, update, and delete cookie stands. The database will be stored in a SQLite database for local storage. However, the database is also accessible remotely from the cloud using ElephantSQL.
 
-**NOTE:** If you are using Postgres instead of SQLite then make sure to install `psycopg2-binary` and include in `requirements.txt`
+## Resources:
+
+- [ElephantSQL](https://elephantsql.com/)
+- [SQLite](https://www.sqlite.org/)
+- [SQLite Browser](https://sqlitebrowser.org/)
+- [RESTful API](https://en.wikipedia.org/wiki/Representational_state_transfer)
+
+## Overview of Dependencies:
+
+- Django Rest Framework
+- rest_framework_simplejwt
+- gunicorn
+- whitenoise
+- dj-database-url
+
+For a comprehensive list of dependencies, see the [requirements.txt](requirements.txt) file.
+
+## Install Dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage:
+
+```bash
+python3 manage.py runserver
+```
+
+## Features:
+
+- Create Cookie Stand
+- Read Cookie Stand
+- Update Cookie Stand
+- Delete Cookie Stand
+- User Interface
+- Local Database
+- Remote Database
+- JWT Authentication
+
+
+
+
+
+
