@@ -13,10 +13,16 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 import environ
+import os
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+
+# Use env variables
 env = environ.Env(
     DEBUG=(bool, False),
     ENVIRONMENT=(str, "PRODUCTION"),
@@ -45,7 +51,9 @@ DEBUG = env.bool("DEBUG")
 ALLOWED_HOSTS = tuple(env.list("ALLOWED_HOSTS"))
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+
+
 
 # Application definition
 
@@ -99,19 +107,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": env.str("DATABASE_ENGINE"),
-        "NAME": env.str("DATABASE_NAME"),
-        "USER": env.str("DATABASE_USER"),
-        "PASSWORD": env.str("DATABASE_PASSWORD"),
-        "HOST": env.str("DATABASE_HOST"),
-        "PORT": env.int("DATABASE_PORT"),
+if env.str("ENVIRONMENT") == "DEVELOPMENT":
+    DATABASES = {
+        'default': {
+            'ENGINE': env.str('DATABASE_ENGINE'),
+            'NAME': env.str('DATABASE_NAME'),
+            'USER': env.str('DATABASE_USER'),
+            'PASSWORD': env.str('DATABASE_PASSWORD'),
+            'HOST': env.str('DATABASE_HOST'),
+            'PORT': env.int('DATABASE_PORT'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=env.str('DATABASE_URL'),
+            conn_max_age=600,
+        )
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
