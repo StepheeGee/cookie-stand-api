@@ -200,3 +200,7 @@ STATICFILES_DIRS = [
 # AUTH
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  
+]
