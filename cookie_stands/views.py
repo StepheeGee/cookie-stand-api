@@ -15,3 +15,5 @@ class CookieStandDetail(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsOwnerOrReadOnly,)
     queryset = CookieStand.objects.all()
     serializer_class = CookieStandSerializer
+
+

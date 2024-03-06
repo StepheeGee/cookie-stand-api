@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     # local
     "accounts",
     "cookie_stands",
+     
 ]
 
 MIDDLEWARE = [
@@ -162,7 +163,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
@@ -191,6 +192,9 @@ SIMPLE_JWT = {
 
 CORS_ORIGIN_WHITELIST = tuple(env.list("ALLOWED_ORIGINS"))
 CORS_ALLOW_ALL_ORIGINS = env.bool("ALLOW_ALL_ORIGINS")
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
 
 # TAILWIND
 STATICFILES_DIRS = [
@@ -201,6 +205,5 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  
-]
+
+
